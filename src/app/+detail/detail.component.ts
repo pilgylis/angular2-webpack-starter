@@ -2,6 +2,9 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { overlayConfigFactory } from 'angular2-modal';
+import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+import { TestDialog1Component } from './test-dialog-1.component';
 /*
  * We're loading this component asynchronously
  * We are using some magic with es6-promise-loader that will wrap the module with a Promise
@@ -20,12 +23,16 @@ console.log('`Detail` component loaded asynchronously');
       </a>
     </span>
     <router-outlet></router-outlet>
+    <p><button (click)='showDialog()'>Show Dialog</button></p>
   `,
 })
 export class DetailComponent implements OnInit {
-
+  constructor(public modal: Modal) {}
   public ngOnInit() {
     console.log('hello `Detail` component');
   }
 
+  public showDialog() {
+    this.modal.open(TestDialog1Component, overlayConfigFactory({}, BSModalContext));
+  }
 }

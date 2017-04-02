@@ -45,7 +45,7 @@ import { AppState } from './app.service';
     <main>
       <router-outlet></router-outlet>
     </main>
-
+  
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
@@ -56,6 +56,7 @@ import { AppState } from './app.service';
         </a>
       </div>
     </footer>
+    <span defaultOverlayTarget></span>
   `
 })
 export class AppComponent implements OnInit {
