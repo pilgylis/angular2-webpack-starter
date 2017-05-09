@@ -1,8 +1,9 @@
 import {
   Component,
   OnInit,
+  ViewContainerRef
 } from '@angular/core';
-import { overlayConfigFactory } from 'angular2-modal';
+import { Overlay, overlayConfigFactory } from 'angular2-modal';
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { TestDialog1Component } from './test-dialog-1.component';
 /*
@@ -27,7 +28,9 @@ console.log('`Detail` component loaded asynchronously');
   `,
 })
 export class DetailComponent implements OnInit {
-  constructor(public modal: Modal) {}
+  constructor(public modal: Modal, overlay: Overlay, vcRef: ViewContainerRef) {
+    overlay.defaultViewContainer = vcRef;
+  }
   public ngOnInit() {
     console.log('hello `Detail` component');
   }
